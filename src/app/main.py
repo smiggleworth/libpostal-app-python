@@ -56,4 +56,9 @@ def explode(address: str):
     if not address:
         return {'error': 'address required'}, 400
 
-    return list(map(parse_internal, expand_address(address)))
+    results = [parse_internal(address)]
+
+    for item in expand_address(address):
+        results.append(parse_internal(item))
+
+    return results

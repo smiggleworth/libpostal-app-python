@@ -1,4 +1,6 @@
-FROM python:3-alpine AS build
+FROM python:3-alpine AS base
+
+FROM base as build
 
 RUN apk update && \
     apk upgrade && \
@@ -13,7 +15,7 @@ RUN ./bootstrap.sh && \
     make && \
     make install
 
-FROM python:3-alpine
+FROM base
 
 RUN apk update && \
     apk upgrade && \
