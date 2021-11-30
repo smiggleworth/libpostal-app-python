@@ -22,14 +22,10 @@ def parse_internal(address):
         result[camel(item[1])] = item[0]
     return result
 
-# index route
-
 
 @app.get('/')
 def index():
     return {'version': 'v1.0.0'}
-
-# parser route
 
 
 @app.get('/parse')
